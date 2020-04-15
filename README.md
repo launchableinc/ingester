@@ -3,6 +3,7 @@ Ingester is a data extraction software used during
 the Product Advisor Program (PAP) to retrieve data from tools in your software development lifecycle.
 The data is used by Launchable to simulate the impact of Launchable in your team.
 
+<!-- diagram source: https://docs.google.com/drawings/d/1s-UOJJoOVNNvbQtcJL3YaOqMLSgUNsRVM1x5OvDQolw/edit -->
 ![Diagram](bigPicture.png)
 
 Ingester is a short-lived command line program packaged as a Docker container.
