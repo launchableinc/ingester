@@ -8,7 +8,7 @@ The data is used by Launchable to simulate the impact of Launchable in your team
 
 Ingester is a short-lived command line program packaged as a Docker container.
 
-What we you to do is as follows:
+What we'd like you to do is as follows:
 
 1. Read this documentation to understand how the ingester works
 1. Decide where to store data. We recommend you start with a local file system on top of a persisted storage. This directory will store data that often gets rotated and discarded in the tools, such as Jenkins build information, so we really do not want to lose anything in this directory! 
