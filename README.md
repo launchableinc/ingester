@@ -33,3 +33,34 @@ docker run -u $(id -u) -ti --rm -e SECRET=$(cat ~/.launchable.secret) -v $PWD/da
 * `-d /data` tells the ingester where to write data files, which is what you mounted from `$PWD/data`
 
 For more details about the command line options and their meanings, run the ingester with `-help` 
+
+### Direct upload to S3
+Ingester is capable of uploading data directly to S3.
+We recommend you to go this route once you get comfortable with the data
+it is collecting. To do this, first place a credential file that we give you
+in your local file system, such as `~/.launchable.s3.credentials`. The file
+should look like this:
+
+```
+AWS_ACCESS_KEY_ID=xxxxxxxxxxxxxxx
+AWS_SECRET_ACCESS_KEY=yyyyyyyyyyyyyyyyyyyyyyyyyy
+AWS_REGION=us-west-2
+```
+
+Pass this file to `docker run` through the `--env-file` option:
+
+```
+docker run --env-file ~/.launchable.s3.credentials ...
+```
+
+Then modify the value of  the `-d` option to S3 URI:
+
+```
+-d s3://launchableinc-pap/YOURACCOUNT/
+```
+
+You can verify that everything is in order by running the `test:s3` command:
+```
+docker run --env-file ~/.launchable.s3.credentials -ti --rm \
+  launchableinc/ingester:$VERSION test:s3 s3://launchableinc-pap/YOURACCOUNT/
+```
